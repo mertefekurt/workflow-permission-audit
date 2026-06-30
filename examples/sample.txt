@@ -1,0 +1,1 @@
+permissions write-all pull_request_target secrets available
