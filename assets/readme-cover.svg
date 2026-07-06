@@ -1,10 +1,31 @@
 <svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow Permission Audit cover">
-  <rect width="1280" height="420" rx="28" fill="#1a1d12"/>
 
-  <path d="M0 344h1280" stroke="#65a30d" stroke-width="28" opacity=".42"/>
-  <path d="M818 78l280 0 86 86v178H818z" fill="none" stroke="#eab308" stroke-width="11" stroke-linejoin="round" opacity=".86"/>
-  <path d="M866 150h220M866 202h166M866 254h238" stroke="#d9f99d" stroke-width="11" stroke-linecap="round"/>
-  <text x="88" y="174" fill="#fefce8" font-family="DM Sans, ui-sans-serif, system-ui" font-size="45" font-weight="900">Workflow Permission Audit</text>
-  <text x="92" y="236" fill="#d9f99d" font-family="DM Sans, ui-sans-serif, system-ui" font-size="24">Focused CLI for GitHub Actions</text>
-  <text x="92" y="296" fill="#65a30d" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="700">DELIVERY AND INFRASTRUCTURE</text>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#eab308" stop-opacity=".34"/>
+      <stop offset=".54" stop-color="#1b2012" stop-opacity="0"/>
+      <stop offset="1" stop-color="#65a30d" stop-opacity=".30"/>
+    </linearGradient>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="10" result="noise"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .10"/></feComponentTransfer>
+      <feBlend mode="soft-light" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="420" rx="30" fill="#1b2012"/>
+  <rect width="1280" height="420" rx="30" fill="url(#g)" filter="url(#grain)"/>
+
+  <circle cx="1044" cy="182" r="178" fill="#eab308" opacity=".14"/>
+  <circle cx="1138" cy="286" r="92" fill="#65a30d" opacity=".18"/>
+  <rect x="86" y="86" width="560" height="248" rx="26" fill="#1b2012" opacity=".68" stroke="#eab308" stroke-width="4"/>
+  <text x="124" y="178" fill="#fefce8" font-family="Sora, ui-sans-serif, system-ui" font-size="48" font-weight="850">Workflow Permission Audit</text>
+  <text x="128" y="234" fill="#d9f99d" font-family="Sora, ui-sans-serif, system-ui" font-size="23">Audit CI workflow snippets for broad permissions and...</text>
+  <text x="128" y="292" fill="#65a30d" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" font-weight="800">DELIVERY</text>
+  <rect x="846" y="122" width="132" height="28" rx="8" fill="#eab308" opacity=".85"/>
+  <text x="862" y="141" fill="#fefce8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">write-all</text>
+  <rect x="846" y="176" width="236" height="28" rx="8" fill="#65a30d" opacity=".85"/>
+  <text x="862" y="195" fill="#fefce8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">pull-request-target</text>
+  <rect x="846" y="230" width="270" height="28" rx="8" fill="#eab308" opacity=".85"/>
+  <text x="862" y="249" fill="#fefce8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">secrets-available</text>
 </svg>

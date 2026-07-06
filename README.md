@@ -1,36 +1,33 @@
 # Workflow Permission Audit
 
-| | |
-| --- | --- |
-| Focus | GitHub Actions |
-| Command | `workflow-permission-audit` |
-| Inputs | text, JSON, JSONL, or CSV |
-| Output | Markdown or JSON |
-
 ![Workflow Permission Audit cover](assets/readme-cover.svg)
 
-Audit CI workflow snippets for broad permissions and risky triggers. The idea is simple: give Workflow Permission Audit the local file or fixture, get a readable result, and decide what needs attention before the next handoff.
+Audit CI workflow snippets for broad permissions and risky triggers.
 
-## Policy surface
+## Before the fix
 
-| Rule | Level | Why it matters |
-| --- | --- | --- |
-| `write-all` | high | workflow has broad write permissions |
-| `pull-request-target` | medium | pull_request_target trigger detected |
-| `secrets-available` | low | secrets may be available to workflow |
+```text
+risky: permissions write-all pull_request_target secrets available
+clean: permissions contents:read pull_request secrets none
+```
 
-## Local run
+## What gets flagged
+
+| Signal | Level | What it flags | Fix direction |
+| --- | --- | --- | --- |
+| `write-all` | high | workflow has broad write permissions | Use least-privilege permissions per job. |
+| `pull-request-target` | medium | pull_request_target trigger detected | Review untrusted code execution paths. |
+| `secrets-available` | low | secrets may be available to workflow | Restrict secrets to trusted branches and jobs. |
+
+## Signal route
+
+![Workflow diagram](assets/readme-diagram.svg)
+
+## Try the fixture
 
 ```bash
 git clone https://github.com/mertefekurt/workflow-permission-audit.git
 cd workflow-permission-audit
-python -m venv .venv
-source .venv/bin/activate
 python -m pip install -e ".[dev]"
 workflow-permission-audit examples/sample.txt
-workflow-permission-audit examples/sample.txt --json
 ```
-
-## Why the sample fails
-
-`permissions write-all pull_request_target secrets available` is intentionally shaped to hit the rules above, so it is useful as a quick smoke test after edits.
